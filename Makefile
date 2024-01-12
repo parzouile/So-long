@@ -6,7 +6,7 @@
 #    By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 20:06:26 by aschmitt          #+#    #+#              #
-#    Updated: 2024/01/12 00:49:18 by aschmitt         ###   ########.fr        #
+#    Updated: 2024/01/12 13:57:04 by aschmitt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,11 @@ OBJ_DIR 	= obj
 CC 			= gcc
 CFLAGS 		= -Wall -Wextra -Werror
 LDFLAGS 	= -Lminilibx/mlx_Linux -Lminilibx/mlx -L/usr/lib -Imlx_linux -lXext -lX11 
-LIB 		= minilibx-linux/libmlx.a minilibx-linux/libmlx_Linux.a
+LIB 		= ml/libmlx.a ml/libmlx_Linux.a
 RM 			= rm -f
 
 # Source Files
-SRC 		= main.c color.c
+SRC 		= test.c color.c
 
 # Apply the pattern addprefix
 OBJ 		= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))

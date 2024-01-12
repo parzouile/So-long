@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 20:17:08 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/12 03:24:57 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:02:46 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	print_map_player(t_vars *vars)
 	int j;
 
 	i = 0;
-	while (i < 1920)
+	while (i < 700)
 	{
 		j = 0;
-		while (j < 1080)
+		while (j < 500)
 			{
 				my_mlx_pixel_put(&(vars->img), i, j,  create_trgb(0,255,0,0));
 				j++;
@@ -43,10 +43,10 @@ void	print_map_player(t_vars *vars)
 		i++;
 	}
 	i = 0;
-	while (i < 50)
+	while (i < vars->player.size)
 	{
 		j = 0;
-		while (j < 50)
+		while (j < vars->player.size)
 			{
 				my_mlx_pixel_put(&(vars->img), vars->player.x + i,  vars->player.y + j,  create_trgb(0,0,0,255));
 				j++;
@@ -58,34 +58,44 @@ void	print_map_player(t_vars *vars)
 
 void	new_player(t_vars *vars, int x, int y)
 {
-	vars->player.x = x;
-	vars->player.y = y;
+	if (x + vars->player.size > vars->width)
+		vars->player.x = vars->width - vars->player.size;
+	else if (x < 0)
+		vars->player.x = 0;
+	else
+		vars->player.x = x;
+	if (y + vars->player.size > vars->height)
+		vars->player.y = vars->height - vars->player.size;
+	else if (y < 0)
+		vars->player.y = 0;
+	else
+		vars->player.y = y;
 }
 
 int	key_hook(int keycode, t_vars *vars)
 {
 	
 	printf("keycode = %d\n", keycode);
-	if (keycode == 65307 )
+	if (keycode == 65307)
 		echap(vars);
-	if (keycode == 65363 )
+	if (keycode == 100)
 	{
-		new_player(vars,  vars->player.x + 20,  vars->player.y);
+		new_player(vars,  vars->player.x + vars->player.size,  vars->player.y);
 		print_map_player(vars);
 	}
-	if (keycode == 65361 )
+	if (keycode == 113)
 	{
-		new_player(vars,  vars->player.x - 20,  vars->player.y);
+		new_player(vars,  vars->player.x - vars->player.size,  vars->player.y);
 		print_map_player(vars);
 	}
-	if (keycode == 65364 )
+	if (keycode == 115)
 	{
-		new_player(vars,  vars->player.x ,  vars->player.y + 20);
+		new_player(vars,  vars->player.x ,  vars->player.y + vars->player.size);
 		print_map_player(vars);
 	}
-	if (keycode == 65362 )
+	if (keycode == 122)
 	{
-		new_player(vars,  vars->player.x,  vars->player.y - 20);
+		new_player(vars,  vars->player.x,  vars->player.y - vars->player.size);
 		print_map_player(vars);
 	}
 	return (0);
@@ -100,11 +110,15 @@ int	main()
 	t_vars	vars;
 
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
-	vars.img.img = mlx_new_image(vars.mlx, 1920, 1080);
+	if (!vars.mlx)
+		return (1);
+	vars.win = mlx_new_window(vars.mlx, 700, 500, "Hello world!");
+	vars.width = 700;
+	vars.height = 500;
+	vars.img.img = mlx_new_image(vars.mlx, 700, 500);
 	vars.img.addr = mlx_get_data_addr(vars.img.img, &(vars.img.bits_per_pixel), &(vars.img.line_length), &(vars.img.endian));
 	new_player(&vars, 0, 0);
-	
+	vars.player.size = 20;
 	print_map_player(&vars);
 	
 	///mlx_loop_hook(vars.mlx, print_map_player, &vars);
