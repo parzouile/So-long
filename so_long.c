@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:47:44 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/14 18:47:55 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/14 18:50:13 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,9 @@ int	main(int argc, char **argv)
 	data.win_ptr = mlx_new_window(data.mlx_ptr, data.width * 49, data.height * 49, "hi");
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
-	init_xpm(&data)
+	init_xpm(&data);
 	print_xpm(&data);
+	
 	// Register key release hook
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
  
