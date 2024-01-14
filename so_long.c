@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:47:44 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/14 18:50:13 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/14 23:33:46 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,6 @@ void	ft_error(char *str, t_data *data)
 	free(data->map);
 	free(data->mlx_ptr);
 	exit(0);
-}
-
-void	aux(t_data *data)
-{
-	int	i;
-	int j;
-	
-	j = -1;
-	i = -1;
-	while (data->map[++i])
-	{
-		j = -1;
-		while (data->map[i][++j])
-			printf("%c", data->map[i][j]);
-	}
-	printf("\n%d\n", data->width);
-	printf("%d\n", data->height	);
 }
 
 int on_destroy(t_data *data)
@@ -64,9 +47,10 @@ void	init_xpm(t_data *data)
 
 	data->player.size = 49;
 	data->player.img = mlx_xpm_file_to_image(data->mlx_ptr, "asset/Homer.xpm", &width, &height);
-	data->coins.img = mlx_xpm_file_to_image(data->mlx_ptr, "asset/donut.xpm", &width, &height);
-	data->coins.x = 5;
-	data->coins.y = 2;
+	data->coins = mlx_xpm_file_to_image(data->mlx_ptr, "asset/donut.xpm", &width, &height);
+	data->exit = mlx_xpm_file_to_image(data->mlx_ptr, "asset/exit.xpm", &width, &height);
+	data->walls = mlx_xpm_file_to_image(data->mlx_ptr, "asset/homer_49.xpm", &width, &height);
+	data->grass = mlx_xpm_file_to_image(data->mlx_ptr, "asset/Gras.xpm", &width, &height);
 	data->player.x = 0;
 	data->player.y = 0;
 	data->n = 0;
@@ -84,10 +68,10 @@ int on_keypress(int keysym, t_data *data)
 		set_pos(data, data->player.x, data->player.y + 1);
 	if (keysym == 122)
 		set_pos(data, data->player.x, data->player.y - 1);
-	if (check_pos(data))
-		print_xpm(data);
-	else
+	if (data->map[data->player.y][data->player.x] == 'E' && is_finish(data))
 		on_destroy(data);
+	else
+		print_xpm(data);
 	return (0);
 }
 

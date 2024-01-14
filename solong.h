@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 20:18:05 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/14 17:41:27 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/14 23:25:50 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,15 @@ typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
+	void		*exit;
+	void		*coins;
+	void		*walls;
+	void		*grass;
 	int			width;
 	int			height;
 	int			n;
 	char		**map;
 	t_player	player;
-	t_coins		coins;
 }				t_data;
 
 
@@ -77,5 +80,6 @@ int		check_pos(t_data *data);
 void	set_pos(t_data *data, int x, int y);
 void	init_map(t_data *data, char **argv);
 void	aux(t_data *data);
+int		is_finish(t_data *data);
 
 #endif

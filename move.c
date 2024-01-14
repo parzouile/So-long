@@ -6,17 +6,12 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:55:08 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/14 18:30:50 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/14 23:26:34 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
-int	check_pos(t_data *data)
-{
-	(void)data;
-	return(1);
-}
  
 void	set_pos(t_data *data, int x, int y)
 {
