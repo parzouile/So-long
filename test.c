@@ -6,17 +6,16 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:58:41 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/13 23:05:59 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/14 17:00:57 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <X11/X.h>
-#include <X11/keysym.h>
- 
 
+ 
+/*
  
 int on_destroy(t_data *data)
 {
@@ -136,4 +135,4 @@ int main(void)
 	print_xpm(&data);
 	mlx_loop(data.mlx_ptr);
 	return (0);
-}
+}*/

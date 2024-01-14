@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 20:18:05 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/13 23:02:13 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/14 17:41:27 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ typedef struct s_data
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
-	void		*map;
-	t_player	player;
-	t_coins		coins;
 	int			width;
 	int			height;
 	int			n;
+	char		**map;
+	t_player	player;
+	t_coins		coins;
 }				t_data;
 
 
@@ -56,7 +56,26 @@ typedef struct	s_vars {
 # include <stdio.h>
 # include "ml/mlx.h"
 # include <stdlib.h>
+# include <fcntl.h>
+#include <X11/X.h>
+#include <X11/keysym.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 20
+# endif
+
+char	*get_next_line(int fd);
+int	ft_strlen(const char *s);
+int		check_nl(char *stack);
+char	*add_to_stack(char *stack, char *buff);
+char	*ft_strdup(char *buff);
 
 int create_trgb(unsigned char t, unsigned char r, unsigned char g, unsigned char b);
+void	ft_error(char *s, t_data *data);
+void	print_xpm(t_data *data);
+int		check_pos(t_data *data);
+void	set_pos(t_data *data, int x, int y);
+void	init_map(t_data *data, char **argv);
+void	aux(t_data *data);
 
 #endif
