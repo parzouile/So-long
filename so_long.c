@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:47:44 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/16 10:03:24 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/16 15:41:32 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ int on_destroy(t_data *data)
 	free(data->map);
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
 	mlx_destroy_display(data->mlx_ptr);
+	free(data->player.img);
+	free(data->coins);
+	free(data->exit);
+	free(data->walls);
+	free(data->grass);
 	free(data->mlx_ptr);
 	exit(0);
 	return (0);
