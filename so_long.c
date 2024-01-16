@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:47:44 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/14 23:33:46 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/16 10:03:24 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,28 @@ void	init_xpm(t_data *data)
 
 int on_keypress(int keysym, t_data *data)
 {
+	printf("key press = %d\n", keysym);
 	if	(keysym == 65307)
 		on_destroy(data);
 	if (keysym == 100)
 		set_pos(data, data->player.x + 1, data->player.y);
-	if (keysym == 113)
+	if (keysym == 97)
 		set_pos(data, data->player.x - 1, data->player.y);
 	if (keysym == 115)
 		set_pos(data, data->player.x, data->player.y + 1);
-	if (keysym == 122)
+	if (keysym == 119)
 		set_pos(data, data->player.x, data->player.y - 1);
 	if (data->map[data->player.y][data->player.x] == 'E' && is_finish(data))
 		on_destroy(data);
 	else
 		print_xpm(data);
+	return (0);
+}
+
+int on_mouse(int keysym, t_data *data)
+{
+	printf("key press = %d\n", keysym);
+	(void)data;
 	return (0);
 }
 
@@ -92,6 +100,7 @@ int	main(int argc, char **argv)
 	
 	// Register key release hook
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
+	mlx_mouse_hook(data.win_ptr, &on_mouse, &data);
  
 	// Register destroy hook
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
