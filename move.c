@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:55:08 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/14 23:26:34 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/19 09:36:55 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,10 @@ void	set_pos(t_data *data, int x, int y)
 	{
 		data->player.x = x;
 		data->player.y = y;
-		data->n++;
-		printf("count: %d\n", data->n);
+		if (data->n)
+			printf("count: %d\n", data->n);
         if (data->map[y][x] == 'C')
             data->map[y][x] = '0';
+		data->n++;
 	}
 }

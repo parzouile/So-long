@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 14:32:03 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/14 15:45:19 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/19 10:23:40 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,40 @@ int	nb_line(int fd)
 	return (n);
 }
 
+void	check_min(t_data *data)
+{
+	int	y;
+	int	x;
+	int	c;
+	int	p;
+	int	e;
+
+	y = -1;
+	c = 0;
+	p = 0;
+	e = 0;
+	while (data->map[++y])
+	{
+		x = 0;
+		while (data->map[y][++x] && data->map[y][x] != '\n')
+		{
+			if (data->map[y][x] == 'C')
+				c++;
+			else if (data->map[y][x] == 'P')
+				p++;
+			else if (data->map[y][x] == 'E')
+				e++;
+		}
+	}
+	if (c == 0 || p != 1 || e != 1)
+		ft_error("Error\nMap error",data);
+}
+
 void	check_map(t_data *data)
 {
 	int	width;
 	int	y;
+	int	x;
 
 	y = 0;
 	width = size_line(data->map[0]);
@@ -54,6 +84,18 @@ void	check_map(t_data *data)
 	}
 	data->height = y;
 	data->width = width;
+	y = -1;
+	while (data->map[++y])
+	{
+		x = 0;
+		while (data->map[y][x] && data->map[y][x] != '\n')
+		{
+			if ((y == 0 || y == data->height -1 || x == 0 || x == data->width - 1) && data->map[y][x] != '1')
+				ft_error("Error\nMap error",data);
+			x++;
+		}
+	}
+	check_min(data);
 }
 
 void	init_map(t_data *data, char **argv)
@@ -64,15 +106,21 @@ void	init_map(t_data *data, char **argv)
 
 	fd = open(argv[1], O_RDONLY);
 	if (!fd)
-		ft_error("Error\nWrong file\n", data);
+		ft_error("Error\nOpen fail\n", data);
 	lines = nb_line(fd);
 	close(fd);
 	data->map = (char **)malloc(sizeof(char *) * (lines + 1));
+	if (!data->map)
+		ft_error("Error\nMalloc fail\n", data);
 	fd = open(argv[1], O_RDONLY);
+	if (!fd)
+		ft_error("Error\nOpen fail\n", data);
 	i = -1;
 	while (++i < lines)
 	{
-		data->map[i] = get_next_line(fd);
+		data->map[i] = get_next_line(fd, data);
+		if (!data->map[i])
+			ft_error("Error\nMalloc fail\n", data);
 	}
 	data->map[lines] = 0;
 	check_map(data);

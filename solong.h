@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 20:18:05 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/14 23:25:50 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/19 10:17:44 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct	s_vars {
 #  define BUFFER_SIZE 20
 # endif
 
-char	*get_next_line(int fd);
+char	*get_next_line(int fd, t_data *data);
 int	ft_strlen(const char *s);
 int		check_nl(char *stack);
 char	*add_to_stack(char *stack, char *buff);

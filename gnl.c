@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:40:47 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/14 15:41:31 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/19 10:27:26 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,12 +102,13 @@ char	*ft_restack(char *stack)
 	return (new_stack);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, t_data *data)
 {
 	static char	*stack;
 	char		*buff;
 	char		*line;
 
+	(void)data;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
