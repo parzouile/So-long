@@ -6,7 +6,7 @@
 #    By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 20:06:26 by aschmitt          #+#    #+#              #
-#    Updated: 2024/01/16 09:31:08 by aschmitt         ###   ########.fr        #
+#    Updated: 2024/01/19 14:31:57 by aschmitt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ LIB 		= ml/libmlx.a ml/libmlx_Linux.a
 RM 			= rm -f
 
 # Source Files
-SRC 		= map.c so_long.c gnl.c gnl_utils.c move.c display.c
+SRC 		= map.c so_long.c gnl.c gnl_utils.c move.c display.c check_solution.c
 
 # Apply the pattern addprefix
 OBJ 		= $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))

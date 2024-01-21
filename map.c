@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 14:32:03 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/19 10:23:40 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/21 12:50:28 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	size_line(char *s)
 	return (i);
 }
 
-int	nb_line(int fd)
+int	nb_line(int fd, t_data *data)
 {
 	int		res;
 	int		n;
@@ -37,6 +37,8 @@ int	nb_line(int fd)
 			n++;
 		res = read(fd, buff, 1);
 	}
+	if (res == -1)
+		ft_error("Error\nWrong file\n", data);
 	return (n);
 }
 
@@ -69,7 +71,7 @@ void	check_min(t_data *data)
 		ft_error("Error\nMap error",data);
 }
 
-void	check_map(t_data *data)
+void	check_walls(t_data *data)
 {
 	int	width;
 	int	y;
@@ -95,8 +97,16 @@ void	check_map(t_data *data)
 			x++;
 		}
 	}
-	check_min(data);
+	
 }
+
+void	check_map(t_data *data)
+{
+	check_walls(data);
+	check_min(data);
+	check_solution(data);
+}
+
 
 void	init_map(t_data *data, char **argv)
 {
@@ -107,7 +117,7 @@ void	init_map(t_data *data, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (!fd)
 		ft_error("Error\nOpen fail\n", data);
-	lines = nb_line(fd);
+	lines = nb_line(fd, data);
 	close(fd);
 	data->map = (char **)malloc(sizeof(char *) * (lines + 1));
 	if (!data->map)
@@ -120,7 +130,11 @@ void	init_map(t_data *data, char **argv)
 	{
 		data->map[i] = get_next_line(fd, data);
 		if (!data->map[i])
+		{
+			printf("%d\n", i);	
 			ft_error("Error\nMalloc fail\n", data);
+			
+		}
 	}
 	data->map[lines] = 0;
 	check_map(data);
