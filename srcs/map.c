@@ -6,21 +6,11 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 14:32:03 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/21 12:50:28 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:30:05 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
-
-int	size_line(char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] && s[i] != '\n')
-		i ++;
-	return (i);
-}
+#include "../inc/solong.h"
 
 int	nb_line(int fd, t_data *data)
 {
@@ -31,7 +21,7 @@ int	nb_line(int fd, t_data *data)
 	buff[0] = '\0';
 	n = 1;
 	res = read(fd, buff, 1);
-	while (res > 0) 
+	while (res > 0)
 	{
 		if (buff[0] == '\n')
 			n++;
@@ -68,7 +58,7 @@ void	check_min(t_data *data)
 		}
 	}
 	if (c == 0 || p != 1 || e != 1)
-		ft_error("Error\nMap error",data);
+		ft_error("Error\nMap error", data);
 }
 
 void	check_walls(t_data *data)
@@ -82,22 +72,21 @@ void	check_walls(t_data *data)
 	while (data->map[++y])
 	{
 		if (size_line(data->map[y]) != width)
-			ft_error("Error\nMap error",data);
+			ft_error("Error\nMap error", data);
 	}
 	data->height = y;
 	data->width = width;
 	y = -1;
 	while (data->map[++y])
 	{
-		x = 0;
-		while (data->map[y][x] && data->map[y][x] != '\n')
+		x = -1;
+		while (data->map[y][++x] && data->map[y][x] != '\n')
 		{
-			if ((y == 0 || y == data->height -1 || x == 0 || x == data->width - 1) && data->map[y][x] != '1')
-				ft_error("Error\nMap error",data);
-			x++;
+			if ((y == 0 || y == data->height - 1 || x == 0 \
+				|| x == data->width - 1) && data->map[y][x] != '1')
+				ft_error("Error\nMap error", data);
 		}
 	}
-	
 }
 
 void	check_map(t_data *data)
@@ -106,7 +95,6 @@ void	check_map(t_data *data)
 	check_min(data);
 	check_solution(data);
 }
-
 
 void	init_map(t_data *data, char **argv)
 {
@@ -130,11 +118,7 @@ void	init_map(t_data *data, char **argv)
 	{
 		data->map[i] = get_next_line(fd, data);
 		if (!data->map[i])
-		{
-			printf("%d\n", i);	
 			ft_error("Error\nMalloc fail\n", data);
-			
-		}
 	}
 	data->map[lines] = 0;
 	check_map(data);

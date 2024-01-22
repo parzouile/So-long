@@ -6,23 +6,11 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:24:51 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/21 12:44:40 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/22 16:23:13 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
-
-void printMatrix(char **map) 
-{
-	int	i;
-
-	i = -1;
-	while (map[++i])
-	{
-		printf("%s", map[i]);
-	}
-	printf("\n");
-}
+#include "../inc/solong.h"
 
 void	ft_free(char **map)
 {
@@ -34,73 +22,62 @@ void	ft_free(char **map)
 	free(map);
 }
 
-int	isValidMove(t_data *data, char **map, int row, int col) 
+void	browse_map(t_data *data, char **map, t_Point start, t_Point *stack)
 {
-	return (row >= 0 && row < data->height && col >= 0 && col < data->width && map[row][col] != '1' && map[row][col] != 'X');
-}
-
-Point	new_point(int i, int j)
-{
-	Point a;
-
-	a.col = j;
-	a.row = i;
-	return (a);
-}
-
-void	browse_map(t_data *data, char **map, int i, int j, Point *stack) 
-{
-	Point	start;
-	Point	current;
-	int top;
+	t_Point	current;
+	int		top;
+	int		i;
+	int		j;
 
 	top = -1;
-	start = new_point(i, j);
 	stack[++top] = start;
-	while (top >= 0) {
+	while (top >= 0)
+	{
 		current = stack[top--];
 		i = current.row;
 		j = current.col;
-		if (!isValidMove(data, map, i, j)) 
-			continue;
+		if (!move_valid(data, map, i, j))
+			continue ;
 		map[i][j] = 'X';
-		if (isValidMove(data, map, i - 1, j))
+		if (move_valid(data, map, i - 1, j))
 			stack[++top] = new_point(i - 1, j);
-		if (isValidMove(data, map, i + 1, j))
+		if (move_valid(data, map, i + 1, j))
 			stack[++top] = new_point(i + 1, j);
-		if (isValidMove(data, map, i, j - 1))
+		if (move_valid(data, map, i, j - 1))
 			stack[++top] = new_point(i, j - 1);
-		if (isValidMove(data, map, i, j + 1))
+		if (move_valid(data, map, i, j + 1))
 			stack[++top] = new_point(i, j + 1);
 	}
 	free(stack);
 }
 
-void	findPaths(t_data *data, char **map) 
+void	find_start(t_data *data, char **map)
 {
 	int		i;
 	int		j;
-	Point	*stack;
+	t_Point	*stack;
 
 	i = -1;
 	while (++i < data->height)
 	{
 		j = -1;
 		while (++j < data->width)
+		{
 			if (map[i][j] == 'P')
 			{
 				data->player.y = i;
 				data->player.x = j;
-				break;
+				break ;
 			}
+		}
 	}
-	stack = (Point *)malloc(sizeof(Point) * data->height * data->width);
+	stack = (t_Point *)malloc(sizeof(t_Point) * data->height * data->width);
 	if (!stack)
 	{
 		ft_free(map);
 		ft_error("Error\nMalloc fail\n", data);
 	}
-	browse_map(data, map, data->player.y, data->player.x, stack);
+	browse_map(data, map, new_point(data->player.y, data->player.x), stack);
 }
 
 int	map_valid(char **map)
@@ -136,9 +113,8 @@ void	check_solution(t_data *data)
 	while (++y < data->height)
 		map[y] = ft_strdup(data->map[y]);
 	map[y] = 0;
-	findPaths(data, map);
+	find_start(data, map);
 	data->player.y = 0;
 	if (!map_valid(map))
 		ft_error("Error\nMap error\n", data);
 }
-	

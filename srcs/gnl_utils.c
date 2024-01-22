@@ -6,11 +6,21 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:41:14 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/14 15:32:44 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:31:31 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "solong.h"
+#include "../inc/solong.h"
+
+int	size_line(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] && s[i] != '\n')
+		i ++;
+	return (i);
+}
 
 int	ft_strlen(const char *s)
 {
