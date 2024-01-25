@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:47:44 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/25 10:26:42 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:02:27 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ int	on_destroy(t_data *data)
 
 void	init_xpm(t_data *data)
 {
-	data->player.img = to_img(data, "asset/Homer.xpm");
-	data->coins = to_img(data, "asset/donut.xpm");
-	data->exit = to_img(data, "asset/exit.xpm");
-	data->walls = to_img(data, "asset/homer_49.xpm");
-	data->grass = to_img(data, "asset/Gras.xpm");
+	data->player.img = to_img(data, "asset/G2/player.xpm");
+	data->coins = to_img(data, "asset/G2/coin.xpm");
+	data->exit = to_img(data, "asset/G2/door.xpm");
+	data->walls = to_img(data, "asset/G2/tree.xpm");
+	data->grass = to_img(data, "asset/G2/grass.xpm");
 	data->player.x = 0;
 	data->player.y = 0;
 	data->n = 0;
