@@ -6,11 +6,11 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:24:51 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/22 16:23:13 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/25 10:15:07 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/solong.h"
+#include "solong.h"
 
 void	ft_free(char **map)
 {

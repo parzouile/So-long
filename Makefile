@@ -6,7 +6,7 @@
 #    By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 20:06:26 by aschmitt          #+#    #+#              #
-#    Updated: 2024/01/22 15:49:47 by aschmitt         ###   ########.fr        #
+#    Updated: 2024/01/25 10:12:52 by aschmitt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRC_DIR			= srcs/
 OBJ_DIR			= obj/
 
 CC 			= gcc
-CFLAGS 		= -Wall -Wextra -Werror
+CFLAGS 		= -Wall -Wextra -Werror -I
 LDFLAGS 	= -Lminilibx/mlx_Linux -Lminilibx/mlx -L/usr/lib -Imlx_linux -lXext -lX11
 LIB 		= inc/ml/libmlx.a inc/ml/libmlx_Linux.a
 RM			= rm -f
@@ -35,7 +35,7 @@ $(NAME):	$(OBJ)
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
 			@mkdir -p $(@D)
-			$(CC) $(CFLAGS) -c $< -o $@
+			$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
 			$(RM) -r $(OBJ_DIR)

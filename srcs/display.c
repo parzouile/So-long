@@ -6,11 +6,11 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:57:24 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/22 15:57:48 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/25 10:23:53 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/solong.h"
+#include "solong.h"
 
 int	is_finish(t_data *data)
 {
@@ -30,7 +30,7 @@ int	is_finish(t_data *data)
 
 void	put(t_data *data, void *img, int x, int y)
 {
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, img, x * 49, y * 49);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, img, x * S, y * S);
 }
 
 void	print_map(t_data *data)

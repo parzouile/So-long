@@ -6,11 +6,11 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:47:44 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/22 16:17:01 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/25 10:26:42 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/solong.h"
+#include "solong.h"
 
 void	free_mlx(t_data *data)
 {
@@ -43,7 +43,6 @@ int	on_destroy(t_data *data)
 
 void	init_xpm(t_data *data)
 {
-	data->player.size = 49;
 	data->player.img = to_img(data, "asset/Homer.xpm");
 	data->coins = to_img(data, "asset/donut.xpm");
 	data->exit = to_img(data, "asset/exit.xpm");

@@ -6,11 +6,11 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:40:47 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/22 14:43:25 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/25 10:14:53 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/solong.h"
+#include "solong.h"
 
 char	*find_line(char *stack, char *buff, int fd)
 {

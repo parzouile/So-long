@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 20:18:05 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/22 16:24:25 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/25 10:27:32 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <unistd.h>
 # include <stdio.h>
-# include "ml/mlx.h"
+# include <ml/mlx.h>
 # include <stdlib.h>
 # include <fcntl.h>
 
@@ -23,11 +23,12 @@
 #  define BUFFER_SIZE 20
 # endif
 
+# define S 49
+
 typedef struct s_player
 {
 	int		x;
 	int		y;
-	int		size;
 	void	*img;
 }				t_player;
 

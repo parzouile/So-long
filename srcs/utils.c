@@ -6,11 +6,11 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:49:02 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/22 16:23:27 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/25 10:31:06 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/solong.h"
+#include "solong.h"
 
 int	move_valid(t_data *data, char **map, int row, int col)
 {
@@ -53,5 +53,5 @@ void	ft_error(char *str, t_data *data)
 
 void	*n_w(t_data *d)
 {
-	return (mlx_new_window(d->mlx_ptr, d->width * 49, d->height * 49, "hi"));
+	return (mlx_new_window(d->mlx_ptr, d->width * S, d->height * S, "MARGE"));
 }

@@ -6,11 +6,11 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:55:08 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/22 15:33:46 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/25 10:14:46 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/solong.h"
+#include "solong.h"
 
 void	set_pos(t_data *data, int x, int y)
 {

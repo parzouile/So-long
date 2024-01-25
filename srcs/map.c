@@ -6,11 +6,11 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 14:32:03 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/22 15:30:05 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/25 10:14:49 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/solong.h"
+#include "solong.h"
 
 int	nb_line(int fd, t_data *data)
 {
