@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:47:44 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/25 15:02:27 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:17:06 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ int	on_keypress(int keysym, t_data *data)
 		set_pos(data, data->player.x, data->player.y - 1);
 	if (data->map[data->player.y][data->player.x] == 'E' && is_finish(data))
 		on_destroy(data);
-	else
-		print_xpm(data);
 	return (0);
 }
 

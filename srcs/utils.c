@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:49:02 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/25 10:31:06 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:50:59 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_error(char *str, t_data *data)
 {
 	int	i;
 
-	printf("%s", str);
+	ft_putstr_fd(str, 1);
 	i = -1;
 	if (data->map)
 	{

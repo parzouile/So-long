@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 20:18:05 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/25 14:46:19 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/01/26 16:25:07 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ int		move_valid(t_data *data, char **map, int row, int col);
 void	*to_img(t_data *data, char *s);
 void	*n_w(t_data *d);
 void	free_mlx(t_data *data);
+void	ft_putstr_fd(const char *str, int fd);
 
 #endif
