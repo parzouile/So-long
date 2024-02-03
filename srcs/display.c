@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:57:24 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/25 10:23:53 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/02/03 00:47:11 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,6 @@ void	print_map(t_data *data)
 				put(data, data->walls, x, y);
 			else if (data->map[y][x] == 'C')
 				put(data, data->coins, x, y);
-			else if (data->map[y][x] == 'P' && data->player.y == 0)
-				set_pos(data, x, y);
-			else if (data->map[y][x] == 'E' && is_finish(data) == 1)
-				put(data, data->exit, x, y);
 			else if (data->map[y][x] == '0' || data->map[y][x] == 'E'
 				|| data->map[y][x] == 'P' )
 				put(data, data->grass, x, y);
@@ -59,10 +55,22 @@ void	print_map(t_data *data)
 				ft_error("Error\nMap error\n", data);
 		}
 	}
+	put(data, data->player.img, data->player.x, data->player.y);
 }
 
-void	print_xpm(t_data *data)
+void	put_mouv(t_data *data, int x, int y)
 {
-	print_map(data);
-	put(data, data->player.img, data->player.x, data->player.y);
+	put(data, data->grass, data->player.x, data->player.y);
+	put(data, data->player.img, x, y);
+	if (is_finish(data) == 1)
+	{
+		y = 0;
+		while (++y < data->height)
+		{
+			x = 0;
+			while (++x < data->width)
+				if (data->map[y][x] == 'E')
+					put(data, data->exit, x, y);
+		}
+	}
 }

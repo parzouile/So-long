@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 14:24:51 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/25 10:15:07 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/02/03 01:38:29 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ void	check_solution(t_data *data)
 		map[y] = ft_strdup(data->map[y]);
 	map[y] = 0;
 	find_start(data, map);
-	data->player.y = 0;
 	if (!map_valid(map))
 		ft_error("Error\nMap error\n", data);
 }

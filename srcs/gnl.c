@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:40:47 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/25 10:14:53 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/02/03 02:06:04 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*find_line(char *stack, char *buff, int fd)
 	while (res > 0)
 	{
 		buff[res] = 0;
-		if (!stack)
+		if (!stack && buff)
 			stack = ft_strdup(buff);
 		else
 			stack = add_to_stack(stack, buff);
@@ -53,7 +53,7 @@ char	*ft_line(char *stack)
 		size ++;
 	line = malloc(sizeof(char) * (size + 1));
 	if (!line)
-		return (NULL);
+		return (free(stack), NULL);
 	i = -1;
 	while (++i < size)
 		line[i] = stack[i];

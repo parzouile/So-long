@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:49:02 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/26 16:50:59 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/02/03 00:48:57 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_error(char *str, t_data *data)
 {
 	int	i;
 
-	ft_putstr_fd(str, 1);
+	ft_putstr_fd(str, 2);
 	i = -1;
 	if (data->map)
 	{
@@ -53,5 +53,5 @@ void	ft_error(char *str, t_data *data)
 
 void	*n_w(t_data *d)
 {
-	return (mlx_new_window(d->mlx_ptr, d->width * S, d->height * S, "MARGE"));
+	return (mlx_new_window(d->mlx_ptr, d->width * S, d->height * S, "ROBINE"));
 }

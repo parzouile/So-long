@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 20:18:05 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/26 16:25:07 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/02/03 00:55:55 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ char	*get_next_line(int fd, t_data *data);
 int		ft_strlen(const char *s);
 int		check_nl(char *stack);
 char	*add_to_stack(char *stack, char *buff);
-char	*ft_strdup(char *buff);
+char	*ft_strdup(char *buff);	
 void	ft_error(char *s, t_data *data);
-void	print_xpm(t_data *data);
+void	print_map(t_data *data);
 int		check_pos(t_data *data);
 void	set_pos(t_data *data, int x, int y);
 void	init_map(t_data *data, char **argv);
@@ -73,5 +73,7 @@ void	*to_img(t_data *data, char *s);
 void	*n_w(t_data *d);
 void	free_mlx(t_data *data);
 void	ft_putstr_fd(const char *str, int fd);
+void	put(t_data *data, void *img, int x, int y);
+void	put_mouv(t_data *data, int x, int y);
 
 #endif

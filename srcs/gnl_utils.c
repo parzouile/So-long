@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:41:14 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/25 10:14:57 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/02/03 02:01:33 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	size_line(char *s)
 	int	i;
 
 	i = 0;
-	while (s[i] && s[i] != '\n')
+	while (s && s[i] && s[i] != '\n')
 		i ++;
 	return (i);
 }
@@ -55,7 +55,7 @@ char	*add_to_stack(char *stack, char *buff)
 	i = -1;
 	result = malloc(sizeof(char) * (ft_strlen(stack) + ft_strlen(buff) + 1));
 	if (!result)
-		return (NULL);
+		return (free(stack), NULL);
 	while (stack[++i])
 		result[i] = stack[i];
 	while (buff[++a])

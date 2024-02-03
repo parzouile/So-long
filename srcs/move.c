@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:55:08 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/26 16:51:32 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/02/03 00:44:13 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,12 @@ void	set_pos(t_data *data, int x, int y)
 	}
 	if (data->player.x != x || data->player.y != y)
 	{
-		data->player.x = x;
-		data->player.y = y;
-		if (data->n)
-			ft_put_count(data->n);
 		if (data->map[y][x] == 'C')
 			data->map[y][x] = '0';
+		put_mouv(data, x, y);
+		data->player.x = x;
+		data->player.y = y;
 		data->n++;
-		print_xpm(data);
+		ft_put_count(data->n);
 	}
 }

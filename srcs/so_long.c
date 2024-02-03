@@ -6,7 +6,7 @@
 /*   By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 13:47:44 by aschmitt          #+#    #+#             */
-/*   Updated: 2024/01/26 16:17:06 by aschmitt         ###   ########.fr       */
+/*   Updated: 2024/02/03 00:54:57 by aschmitt         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ int	main(int argc, char **argv)
 	data.win_ptr = n_w(&data);
 	if (!data.win_ptr)
 		ft_error("Error\nWindow error", &data);
-	print_xpm(&data);
-	mlx_hook(data.win_ptr, 3, 1L << 1, &on_keypress, &data);
+	print_map(&data);
+	mlx_hook(data.win_ptr, 2, 1L << 0, &on_keypress, &data);
 	mlx_hook(data.win_ptr, 17, 1L << 17, &on_destroy, &data);
 	mlx_loop(data.mlx_ptr);
 	return (0);
