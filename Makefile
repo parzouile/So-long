@@ -6,7 +6,7 @@
 #    By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 20:06:26 by aschmitt          #+#    #+#              #
-#    Updated: 2024/02/03 01:02:49 by aschmitt         ###   ########.fr        #
+#    Updated: 2024/02/09 13:47:37 by aschmitt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,11 +27,15 @@ SRC 		= $(SRC_DIR)map.c $(SRC_DIR)so_long.c $(SRC_DIR)gnl.c $(SRC_DIR)gnl_utils.
 
 OBJ 		= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))
 
+G = "\033[32m"
+X = "\033[0m"
 
 all: 		$(NAME)
 
 $(NAME):	$(OBJ)
+			@echo $(G)Compiling [$(SRC)]$(X)
 			@$(CC) $^ $(LIB) $(LDFLAGS) -o $(NAME)
+			@echo $(G)Compiling [$(NAME)]$(X)
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
 			@mkdir -p $(@D)
