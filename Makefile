@@ -6,7 +6,7 @@
 #    By: aschmitt <aschmitt@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 20:06:26 by aschmitt          #+#    #+#              #
-#    Updated: 2024/02/09 13:47:37 by aschmitt         ###   ########.fr        #
+#    Updated: 2024/02/21 10:03:12 by aschmitt         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,19 +32,21 @@ X = "\033[0m"
 
 all: 		$(NAME)
 
-$(NAME):	$(OBJ)
+$(NAME):	$(OBJ) 
 			@echo $(G)Compiling [$(SRC)]$(X)
 			@$(CC) $^ $(LIB) $(LDFLAGS) -o $(NAME)
 			@echo $(G)Compiling [$(NAME)]$(X)
 
-$(OBJ_DIR)%.o:	$(SRC_DIR)%.c
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.c $(INC)*.h Makefile
 			@mkdir -p $(@D)
 			@$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
 clean:
+			@echo $(G)Delete [Obj]$(X)	
 			@$(RM) -r $(OBJ_DIR)
 
 fclean: 	clean
+			@echo $(G)Delete [$(NAME)]$(X)	
 			@$(RM) $(NAME)
 
 re: fclean all
